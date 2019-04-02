@@ -1,0 +1,46 @@
+/* Useful mixins */
+
+/* Default transitions */
+@mixin transition($what: all, $time: 0.25s, $how: ease-in-out) {
+  -webkit-transition: $what $time $how;
+  -moz-transition:    $what $time $how;
+  -ms-transition:     $what $time $how;
+  -o-transition:      $what $time $how;
+  transition:         $what $time $how;
+}
+
+/* Vertical align */
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* Border radius */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+/* Responsive breakpoints */
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 992px) { @content ; }
+  }
+    @else if $point == laptop {
+      @media (min-width: 992px) { @content ; }
+   }
+    @else if $point == tablet {
+    @media (max-width: 870px) { @content ; }
+  }
+    @else if $point == phablet {
+      @media (min-width: 37.5em)  { @content ; }
+   }
+  @else if $point == mobile {
+    @media (max-width: 660px)  { @content ; }
+  }
+}
+
