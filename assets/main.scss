@@ -1,0 +1,317 @@
+/* Normalise */
+@import "normalize";
+@import "reset";
+@import "fonts";
+@import "colors";
+@import "mixins";
+
+$border-width: 10px;
+
+$p: 18px; // Your base font-size in pixels
+$lh: $p * 1.25; // 30px
+
+$h1: 54px;
+$h2: 36px;
+$h3: 18px;
+
+h1, h2, h3, p {
+  font-family: $sans;
+  font-weight: 700;
+  margin:0;
+  font-size: $p;
+  margin-bottom: $lh;
+}
+
+p {
+  font-weight:300;
+}
+
+.h1 {
+  font-size: $h1;
+  $h1-lh: $h1 * 1.1250;
+  line-height: $h1-lh;
+  margin-bottom: $h1-lh;
+}
+
+.h2 {
+  font-size: $h2;
+  $h2-lh: $h2 * 1.15625;
+  line-height: $h2-lh;
+  margin-bottom: $h2-lh;
+}
+
+.h3 {
+  font-size: $h3;
+  $h3-lh: $h3 * 1.1953125;
+  line-height: $h3-lh;
+  margin-bottom: $h3-lh;
+}
+
+p {
+  font-size: $p;
+  line-height: $lh;
+  margin-bottom: $lh;
+}
+
+p.intro, .p-head, strong, b {
+  font-weight:700;
+}
+
+::selection {
+  background: $accent-color;
+  /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: $accent-color;
+  /* Gecko Browsers */
+}
+// HTML base
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-size: $p;
+  line-height: $lh;
+  font-family: $sans;
+  color: $light;
+}
+// Body base
+body {
+  background: $bg;
+}
+
+
+.contained {
+  width: 770px;
+  max-width:80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+a {
+  color:$light;
+  @include transition (all, 0.25s, ease-in-out);
+}
+
+a:hover {
+  text-decoration:none;
+}
+
+header {
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: space-between;
+  height:120px;
+  @include breakpoint(mobile){
+    justify-content: center;
+    height:60px;
+    }
+}
+
+header h1.h2 {
+  color:$secondary-color;
+  height:52px;
+  @include vertical-align();
+  @include breakpoint(mobile){
+    font-size:18px;
+    height:30px;
+    }
+}
+
+header nav {
+  height:30px;
+  @include vertical-align();
+  @include breakpoint(mobile){
+    display:none;
+    }
+
+}
+
+header nav a {
+  text-decoration:none;
+  @include transition (all, 0.25s, ease-in-out);
+  @include breakpoint(mobile){
+    font-size:16px;
+    height:30px;
+    }
+}
+
+header nav a:hover {
+  color:$secondary-color;
+}
+
+section.hero {
+  height:800px;
+  background: url('/img/hero-bg-vector.png') center center no-repeat;
+  @include breakpoint(tablet){
+    background-size: 80%;
+
+    }
+  @include breakpoint(mobile){
+    background:none;
+    height:40vh;
+    }
+}
+
+section.hero h1 {
+  @include vertical-align();
+  padding: 0 60px;
+  @include breakpoint(tablet){
+    text-align:center;
+    padding: 0 30px;
+    }
+  @include breakpoint(mobile){
+    font-size:36px;
+    line-height:1.25em;
+    }
+}
+
+section.tuition {
+  background:$light;
+  color:$primary-color;
+  padding:60px 0;
+}
+
+section.tuition h1 {
+  color: $secondary-color;
+}
+
+.tuition-header {
+  justify-content:center;
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.tuition-body .two-col {
+  width:50%;
+  padding-right:60px;
+    @include breakpoint(tablet){
+      width: 100%;
+      padding-right:0px;
+      }
+}
+
+.tuition-body {
+  margin-bottom: 60px;
+}
+
+.tuition-pricing {
+  background:$secondary-color;
+  color:$primary-color;
+  padding:30px 60px;
+  @include border-radius(3px);
+  @include breakpoint(tablet){
+    padding:30px;
+    }
+}
+
+button {
+  padding:20px 40px;
+  @include border-radius(3px);
+  border:0;
+  background:$primary-color;
+  color:$light;
+  @include transition (all, 0.25s, ease-in-out);
+  cursor: pointer;
+}
+
+button:hover {
+  background:$light;
+  color:$primary-color;
+}
+
+section.copywriting {
+  padding:60px;
+}
+
+.copywriting-content {
+  justify-content:center;
+  text-align:center;
+}
+
+.copywriting-content h1 {
+  color:$secondary-color;
+}
+
+.copywriting-content a, .copywriting-content a:visited,  {
+  color:$secondary-color;
+}
+
+.copywriting-content a:hover {
+  color:$light;
+}
+
+section.about-contact {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+section.about-contact > .about, section.about-contact > .contact  {
+  width:50%;
+  @include breakpoint(tablet){
+    width:100%;
+    }
+  @include breakpoint(mobile){
+    width: 100%;
+    }
+}
+
+.about {
+  background:$light;
+  color:$primary-color;
+  padding:60px 120px;
+  @include breakpoint(tablet){
+    padding:30px 60px;
+    }
+  @include breakpoint(mobile){
+    padding:30px 60px;
+    }
+}
+
+.about-text {
+  @include vertical-align();
+}
+
+.about h1 {
+  color:$secondary-color;
+}
+
+.contact {
+  background:$secondary-color;
+  color:$primary-color;
+}
+
+.contact-text {
+  padding:60px;
+  @include breakpoint(tablet){
+    padding:30px 60px;
+    }
+  @include breakpoint(mobile){
+    padding:30px 60px;
+    }
+}
+
+.contact-text a, .contact-text a:visited  {
+  color:$primary-color;
+  @include transition (all, 0.25s, ease-in-out);
+  text-decoration:none;
+}
+
+.contact-text a:hover {
+  color:$light;
+}
+
+footer {
+  padding:30px;
+  justify-content: center;
+}
+
+footer p {
+  margin:0;
+  text-align:center;
+}
