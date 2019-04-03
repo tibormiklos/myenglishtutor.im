@@ -1,61 +1,15 @@
-/* Normalise */
 @import "normalize";
 @import "reset";
 @import "fonts";
 @import "colors";
 @import "mixins";
 
-$border-width: 10px;
+// Some defaults
 
-$p: 18px; // Your base font-size in pixels
-$lh: $p * 1.25; // 30px
-
-$h1: 54px;
-$h2: 36px;
-$h3: 18px;
-
-h1, h2, h3, p {
-  font-family: $sans;
-  font-weight: 700;
-  margin:0;
-  font-size: $p;
-  margin-bottom: $lh;
-}
-
-p {
-  font-weight:300;
-}
-
-.h1 {
-  font-size: $h1;
-  $h1-lh: $h1 * 1.1250;
-  line-height: $h1-lh;
-  margin-bottom: $h1-lh;
-}
-
-.h2 {
-  font-size: $h2;
-  $h2-lh: $h2 * 1.15625;
-  line-height: $h2-lh;
-  margin-bottom: $h2-lh;
-}
-
-.h3 {
-  font-size: $h3;
-  $h3-lh: $h3 * 1.1953125;
-  line-height: $h3-lh;
-  margin-bottom: $h3-lh;
-}
-
-p {
-  font-size: $p;
-  line-height: $lh;
-  margin-bottom: $lh;
-}
-
-p.intro, .p-head, strong, b {
-  font-weight:700;
-}
+  $base-font: 18px;
+  $base-line-height:1.5;
+  $border-width: 10px;
+  $border-radius: 3px;
 
 ::selection {
   background: $accent-color;
@@ -74,16 +28,87 @@ html {
   font-variant: normal;
   font-weight: 500;
   font-stretch: normal;
-  font-size: $p;
-  line-height: $lh;
   font-family: $sans;
   color: $light;
+  font-size:$base-font;
+  line-height:$base-line-height;
 }
 // Body base
 body {
   background: $bg;
 }
 
+// Typography 
+    $f1: 54px;
+
+@mixin f1 {
+    font-family: $sans;
+
+    font-size: $f1;   
+    $f1-lh: $f1 * 1.125;
+    line-height: $f1-lh;
+    margin-bottom: $f1-lh;
+    font-weight: 700; 
+}
+
+ $f2: 36px;
+
+@mixin f2 {
+    font-family: $sans;
+    font-size: $f2;
+    $f2-lh: $f2 * 1.15;
+    line-height: $f2-lh;
+    margin-bottom: $f2-lh;
+    font-weight: 700;
+}
+
+    $f3: 18px;
+
+@mixin f3 {
+    font-family: $sans;
+
+    font-size: $f3;
+    $f3-lh: $f3 * 1.25;
+    line-height: $f3-lh;
+    margin-bottom: $f3-lh;
+    font-weight:700;
+}
+
+@mixin fp {
+    $fp: 18px;
+    font-size: $fp;
+    $fp-lh: $fp * 1.25;
+    line-height: $fp-lh;
+    margin-bottom: $fp-lh;
+    font-weight:300;
+}
+
+.f1 {
+    @include f1;
+}
+
+.f2 {
+    @include f2;
+}
+
+.f3 {
+    @include f3;
+}
+
+.fp {
+    @include fp;
+}
+
+.fp-intro {
+  @include fp;
+  font-weight:700;
+}
+
+strong {
+  font-weight:700;
+}
+
+/* Usage: @include fX; */
 
 .contained {
   width: 770px;
@@ -91,9 +116,11 @@ body {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 a {
+  @include fp;
   color:$light;
   @include transition (all, 0.25s, ease-in-out);
 }
@@ -103,41 +130,25 @@ a:hover {
 }
 
 header {
-  display: flex;
-  flex-wrap:nowrap;
-  justify-content: space-between;
   height:120px;
-  @include breakpoint(mobile){
-    justify-content: center;
-    height:60px;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header h1.h2 {
+header > h1 {
   color:$secondary-color;
-  height:52px;
-  @include vertical-align();
-  @include breakpoint(mobile){
-    font-size:18px;
-    height:30px;
+  margin-bottom:28px !important;
+  @include respond-to(phone){
+    @include f3;
     }
 }
 
-header nav {
-  height:30px;
-  @include vertical-align();
-  @include breakpoint(mobile){
-    display:none;
-    }
-
-}
-
-header nav a {
+header > nav > a {
   text-decoration:none;
   @include transition (all, 0.25s, ease-in-out);
-  @include breakpoint(mobile){
-    font-size:16px;
-    height:30px;
+    @include respond-to(phone){
+    display:none;
     }
 }
 
@@ -146,28 +157,29 @@ header nav a:hover {
 }
 
 section.hero {
-  height:800px;
+  height:80vh;
   background: url('/img/hero-bg-vector.png') center center no-repeat;
-  @include breakpoint(tablet){
-    background-size: 80%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include respond-to(tablet-portrait){
+    background-size: 95%;
+    height:60vh;
     }
-  @include breakpoint(mobile){
-    background:none;
-    height:40vh;
+  @include respond-to(phone){
+    width: 90%;
+    height:50vh;
     }
 }
 
 section.hero h1 {
-  @include vertical-align();
   padding: 0 60px;
-  @include breakpoint(tablet){
-    text-align:center;
-    padding: 0 30px;
-    }
-  @include breakpoint(mobile){
-    font-size:36px;
-    line-height:1.25em;
+  @include respond-to(tablet-portrait){
+  padding: 0 30px;
+  }
+    @include respond-to(phone){
+    padding: 0 0;
+    @include f2;
     }
 }
 
@@ -187,10 +199,10 @@ section.tuition h1 {
   margin-bottom:60px;
 }
 
-.tuition-body .two-col {
+.col {
   width:50%;
   padding-right:60px;
-    @include breakpoint(tablet){
+    @include respond-to(tablet-portrait){
       width: 100%;
       padding-right:0px;
       }
@@ -204,15 +216,15 @@ section.tuition h1 {
   background:$secondary-color;
   color:$primary-color;
   padding:30px 60px;
-  @include border-radius(3px);
-  @include breakpoint(tablet){
+  @include border-radius($border-radius);
+  @include respond-to(tablet-portrait){
     padding:30px;
     }
 }
 
 button {
   padding:20px 40px;
-  @include border-radius(3px);
+  @include border-radius($border-radius);
   border:0;
   background:$primary-color;
   color:$light;
@@ -220,8 +232,15 @@ button {
   cursor: pointer;
 }
 
+button a {
+  text-decoration:none;
+}
+
 button:hover {
   background:$light;
+}
+
+button:hover a {
   color:$primary-color;
 }
 
@@ -251,24 +270,29 @@ section.about-contact {
   flex-wrap: wrap;
 }
 
-section.about-contact > .about, section.about-contact > .contact  {
+section.about-contact > .about, section.about-contact > .contact, .col  {
   width:50%;
-  @include breakpoint(tablet){
+  @include respond-to(tablet-portrait){
     width:100%;
     }
-  @include breakpoint(mobile){
+  @include respond-to(phone){
     width: 100%;
     }
+}
+
+.col {
+  padding-right:60px;
+
 }
 
 .about {
   background:$light;
   color:$primary-color;
   padding:60px 120px;
-  @include breakpoint(tablet){
+  @include respond-to(tablet-portrait){
     padding:30px 60px;
     }
-  @include breakpoint(mobile){
+  @include respond-to(phone){
     padding:30px 60px;
     }
 }
@@ -288,10 +312,10 @@ section.about-contact > .about, section.about-contact > .contact  {
 
 .contact-text {
   padding:60px;
-  @include breakpoint(tablet){
+  @include respond-to(tablet-portrait){
     padding:30px 60px;
     }
-  @include breakpoint(mobile){
+  @include respond-to(phone){
     padding:30px 60px;
     }
 }
@@ -307,11 +331,8 @@ section.about-contact > .about, section.about-contact > .contact  {
 }
 
 footer {
-  padding:30px;
+  display: flex;
   justify-content: center;
-}
-
-footer p {
-  margin:0;
-  text-align:center;
-}
+  padding: 30px;
+  color: #fff;
+  }

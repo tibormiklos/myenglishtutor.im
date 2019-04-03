@@ -1,5 +1,4 @@
-/* Normalise */
-/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
 /**
@@ -21,6 +20,13 @@ html {
  */
 body {
   margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
 }
 
 /**
@@ -355,54 +361,81 @@ figure {
 }
 
 /* Fonts */
-/* Stacks based on: https://css-tricks.com/snippets/css/font-stacks/ */
+/* Import brand fonts */
+/* Define brand fonts */
+/* Default stacks based on: https://css-tricks.com/snippets/css/font-stacks/ */
+/* Final stacks to include brand + default fall back */
 /* Colours */
-/* @include transition(all,2s,ease-out); */
-h1, h2, h3, p {
-  font-family: "Campaign", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-weight: 700;
-  margin: 0;
-  font-size: 18px;
-  margin-bottom: 22.5px;
+/* Useful mixins */
+/* Default transitions */
+/* Vertical align */
+/* Flex center */
+.center-both {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-p {
-  font-weight: 300;
+.center-vertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.h1 {
-  font-size: 54px;
-  line-height: 60.75px;
-  margin-bottom: 60.75px;
+.center-horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.h2 {
-  font-size: 36px;
-  line-height: 41.625px;
-  margin-bottom: 41.625px;
+.center-none {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.h3 {
-  font-size: 18px;
-  line-height: 21.51562px;
-  margin-bottom: 21.51562px;
-}
-
-p {
-  font-size: 18px;
-  line-height: 22.5px;
-  margin-bottom: 22.5px;
-}
-
-p.intro, .p-head, strong, b {
-  font-weight: 700;
-}
-
+/* Border radius */
+/* Responsive mixin source: https://gist.github.com/peschee/5734414 */
+/**
+ * Responsive mixin. The media breakpoints are as defined
+ * in the twitter bootstrap framework:
+ *
+ * - phone
+ * - tablet-portrait
+ * - tablet-landscape-desktop
+ * - large-desktop
+ *
+ * Additional parameters for tagetting retina and non-retina
+ * devices
+ *
+ * - retina
+ * - non-retina
+ *
+ * Moreover, a specific value in px can be passed which is
+ * used to generate a max-width media query.
+ */
 ::-moz-selection {
   background: #F9C0C0;
   /* WebKit/Blink Browsers */
 }
-
 ::selection {
   background: #F9C0C0;
   /* WebKit/Blink Browsers */
@@ -420,16 +453,60 @@ html {
   font-variant: normal;
   font-weight: 500;
   font-stretch: normal;
-  font-size: 18px;
-  line-height: 22.5px;
   font-family: "Campaign", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   color: #fff;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 body {
   background: #422D5B;
 }
 
+.f1 {
+  font-family: "Campaign", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 54px;
+  line-height: 60.75px;
+  margin-bottom: 60.75px;
+  font-weight: 700;
+}
+
+.f2 {
+  font-family: "Campaign", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 36px;
+  line-height: 41.4px;
+  margin-bottom: 41.4px;
+  font-weight: 700;
+}
+
+.f3 {
+  font-family: "Campaign", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  line-height: 22.5px;
+  margin-bottom: 22.5px;
+  font-weight: 700;
+}
+
+.fp {
+  font-size: 18px;
+  line-height: 22.5px;
+  margin-bottom: 22.5px;
+  font-weight: 300;
+}
+
+.fp-intro {
+  font-size: 18px;
+  line-height: 22.5px;
+  margin-bottom: 22.5px;
+  font-weight: 300;
+  font-weight: 700;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* Usage: @include fX; */
 .contained {
   width: 770px;
   max-width: 80%;
@@ -439,9 +516,17 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 a {
+  font-size: 18px;
+  line-height: 22.5px;
+  margin-bottom: 22.5px;
+  font-weight: 300;
   color: #fff;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
@@ -452,66 +537,44 @@ a:hover {
 }
 
 header {
+  height: 120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 120px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-@media (max-width: 660px) {
-  header {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    height: 60px;
-  }
-}
-
-header h1.h2 {
+header > h1 {
   color: #F9C0C0;
-  height: 52px;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  margin-bottom: 28px !important;
+  /* Landscape phones and down */
 }
 
-@media (max-width: 660px) {
-  header h1.h2 {
+@media (max-width: 480px) {
+  header > h1 {
+    font-family: "Campaign", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     font-size: 18px;
-    height: 30px;
+    line-height: 22.5px;
+    margin-bottom: 22.5px;
+    font-weight: 700;
   }
 }
 
-header nav {
-  height: 30px;
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-@media (max-width: 660px) {
-  header nav {
-    display: none;
-  }
-}
-
-header nav a {
+header > nav > a {
   text-decoration: none;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
+  /* Landscape phones and down */
 }
 
-@media (max-width: 660px) {
-  header nav a {
-    font-size: 16px;
-    height: 30px;
+@media (max-width: 480px) {
+  header > nav > a {
+    display: none;
   }
 }
 
@@ -520,42 +583,55 @@ header nav a:hover {
 }
 
 section.hero {
-  height: 800px;
+  height: 80vh;
   background: url("/img/hero-bg-vector.png") center center no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* Landscape phones and down */
+  /* Landscape phones and down */
 }
 
-@media (max-width: 870px) {
+@media (max-width: 767px) {
   section.hero {
-    background-size: 80%;
+    background-size: 95%;
+    height: 60vh;
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 480px) {
   section.hero {
-    background: none;
-    height: 40vh;
+    width: 90%;
+    height: 50vh;
   }
 }
 
 section.hero h1 {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
   padding: 0 60px;
+  /* Landscape phones and down */
+  /* Landscape phones and down */
 }
 
-@media (max-width: 870px) {
+@media (max-width: 767px) {
   section.hero h1 {
-    text-align: center;
     padding: 0 30px;
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 480px) {
   section.hero h1 {
+    padding: 0 0;
+    font-family: "Campaign", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     font-size: 36px;
-    line-height: 1.25em;
+    line-height: 41.4px;
+    margin-bottom: 41.4px;
+    font-weight: 700;
   }
 }
 
@@ -577,13 +653,14 @@ section.tuition h1 {
   margin-bottom: 60px;
 }
 
-.tuition-body .two-col {
+.col {
   width: 50%;
   padding-right: 60px;
+  /* Landscape phones and down */
 }
 
-@media (max-width: 870px) {
-  .tuition-body .two-col {
+@media (max-width: 767px) {
+  .col {
     width: 100%;
     padding-right: 0px;
   }
@@ -600,9 +677,10 @@ section.tuition h1 {
   border-radius: 3px;
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */
+  /* Landscape phones and down */
 }
 
-@media (max-width: 870px) {
+@media (max-width: 767px) {
   .tuition-pricing {
     padding: 30px;
   }
@@ -621,8 +699,15 @@ button {
   cursor: pointer;
 }
 
+button a {
+  text-decoration: none;
+}
+
 button:hover {
   background: #fff;
+}
+
+button:hover a {
   color: #422D5B;
 }
 
@@ -657,35 +742,43 @@ section.about-contact {
       flex-wrap: wrap;
 }
 
-section.about-contact > .about, section.about-contact > .contact {
+section.about-contact > .about, section.about-contact > .contact, .col {
   width: 50%;
+  /* Landscape phones and down */
+  /* Landscape phones and down */
 }
 
-@media (max-width: 870px) {
-  section.about-contact > .about, section.about-contact > .contact {
+@media (max-width: 767px) {
+  section.about-contact > .about, section.about-contact > .contact, .col {
     width: 100%;
   }
 }
 
-@media (max-width: 660px) {
-  section.about-contact > .about, section.about-contact > .contact {
+@media (max-width: 480px) {
+  section.about-contact > .about, section.about-contact > .contact, .col {
     width: 100%;
   }
+}
+
+.col {
+  padding-right: 60px;
 }
 
 .about {
   background: #fff;
   color: #422D5B;
   padding: 60px 120px;
+  /* Landscape phones and down */
+  /* Landscape phones and down */
 }
 
-@media (max-width: 870px) {
+@media (max-width: 767px) {
   .about {
     padding: 30px 60px;
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 480px) {
   .about {
     padding: 30px 60px;
   }
@@ -709,15 +802,17 @@ section.about-contact > .about, section.about-contact > .contact {
 
 .contact-text {
   padding: 60px;
+  /* Landscape phones and down */
+  /* Landscape phones and down */
 }
 
-@media (max-width: 870px) {
+@media (max-width: 767px) {
   .contact-text {
     padding: 30px 60px;
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 480px) {
   .contact-text {
     padding: 30px 60px;
   }
@@ -735,14 +830,13 @@ section.about-contact > .about, section.about-contact > .contact {
 }
 
 footer {
-  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-footer p {
-  margin: 0;
-  text-align: center;
+  padding: 30px;
+  color: #fff;
 }
 /*# sourceMappingURL=main.css.map */
