@@ -39,8 +39,8 @@ body {
 }
 
 // Typography 
-    $f1: 54px;
 
+$f1: 54px;
 @mixin f1 {
     font-family: $sans;
 
@@ -51,8 +51,7 @@ body {
     font-weight: 700; 
 }
 
- $f2: 36px;
-
+$f2: 36px;
 @mixin f2 {
     font-family: $sans;
     font-size: $f2;
@@ -62,11 +61,9 @@ body {
     font-weight: 700;
 }
 
-    $f3: 18px;
-
+$f3: 18px;
 @mixin f3 {
     font-family: $sans;
-
     font-size: $f3;
     $f3-lh: $f3 * 1.25;
     line-height: $f3-lh;
@@ -74,8 +71,8 @@ body {
     font-weight:700;
 }
 
+$fp: 18px;
 @mixin fp {
-    $fp: 18px;
     font-size: $fp;
     $fp-lh: $fp * 1.25;
     line-height: $fp-lh;
@@ -134,21 +131,26 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-header > h1 {
-  color:$secondary-color;
-  margin-bottom:28px !important;
   @include respond-to(phone){
-    @include f3;
+    justify-content: start;
+    height:80px;
     }
 }
 
-header > nav > a {
+header h1 {
+  color:$secondary-color;
+  margin-bottom:28px !important;
+  @include respond-to(phone){
+    font-size:20px !important;
+    margin-bottom:18px !important;
+    }
+}
+
+header nav a.tuition {
   text-decoration:none;
   @include transition (all, 0.25s, ease-in-out);
     @include respond-to(phone){
-    display:none;
+    // display:none;
     }
 }
 
@@ -167,8 +169,9 @@ section.hero {
     height:60vh;
     }
   @include respond-to(phone){
-    width: 90%;
-    height:50vh;
+    background-size: 90%;
+    height:40vh;
+    background-position: center center;
     }
 }
 
@@ -180,6 +183,7 @@ section.hero h1 {
     @include respond-to(phone){
     padding: 0 0;
     @include f2;
+    margin:0;
     }
 }
 
@@ -230,6 +234,9 @@ button {
   color:$light;
   @include transition (all, 0.25s, ease-in-out);
   cursor: pointer;
+  @include respond-to(phone){
+    padding:10px 20px;
+  }
 }
 
 button a {
@@ -246,11 +253,14 @@ button:hover a {
 
 section.copywriting {
   padding:60px;
+  @include respond-to(phone) {
+    padding:30px;
+  }
 }
 
 .copywriting-content {
-  justify-content:center;
-  text-align:center;
+  justify-content:start;
+  text-align:left;
 }
 
 .copywriting-content h1 {
@@ -282,7 +292,9 @@ section.about-contact > .about, section.about-contact > .contact, .col  {
 
 .col {
   padding-right:60px;
-
+  @include respond-to(phone){
+    padding-right:0;
+    }
 }
 
 .about {

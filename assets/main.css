@@ -547,35 +547,36 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  /* Landscape phones and down */
 }
 
-header > h1 {
+@media (max-width: 480px) {
+  header {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    height: 80px;
+  }
+}
+
+header h1 {
   color: #F9C0C0;
   margin-bottom: 28px !important;
   /* Landscape phones and down */
 }
 
 @media (max-width: 480px) {
-  header > h1 {
-    font-family: "Campaign", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 18px;
-    line-height: 22.5px;
-    margin-bottom: 22.5px;
-    font-weight: 700;
+  header h1 {
+    font-size: 20px !important;
+    margin-bottom: 18px !important;
   }
 }
 
-header > nav > a {
+header nav a.tuition {
   text-decoration: none;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   /* Landscape phones and down */
-}
-
-@media (max-width: 480px) {
-  header > nav > a {
-    display: none;
-  }
 }
 
 header nav a:hover {
@@ -607,8 +608,9 @@ section.hero {
 
 @media (max-width: 480px) {
   section.hero {
-    width: 90%;
-    height: 50vh;
+    background-size: 90%;
+    height: 40vh;
+    background-position: center center;
   }
 }
 
@@ -632,6 +634,7 @@ section.hero h1 {
     line-height: 41.4px;
     margin-bottom: 41.4px;
     font-weight: 700;
+    margin: 0;
   }
 }
 
@@ -697,6 +700,13 @@ button {
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
+  /* Landscape phones and down */
+}
+
+@media (max-width: 480px) {
+  button {
+    padding: 10px 20px;
+  }
 }
 
 button a {
@@ -713,13 +723,20 @@ button:hover a {
 
 section.copywriting {
   padding: 60px;
+  /* Landscape phones and down */
+}
+
+@media (max-width: 480px) {
+  section.copywriting {
+    padding: 30px;
+  }
 }
 
 .copywriting-content {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  text-align: left;
 }
 
 .copywriting-content h1 {
@@ -762,6 +779,13 @@ section.about-contact > .about, section.about-contact > .contact, .col {
 
 .col {
   padding-right: 60px;
+  /* Landscape phones and down */
+}
+
+@media (max-width: 480px) {
+  .col {
+    padding-right: 0;
+  }
 }
 
 .about {

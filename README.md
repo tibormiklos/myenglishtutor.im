@@ -4,7 +4,7 @@ A simple website for Eleanor Miklos, Isle of Man based english tutor and writer.
 
 ## Authors
 
-* **Tibor Miklos/Studio Mikla** - *Initial work* - [tibormiklos](https://github.com/tibormiklos)
+* **Tibor Miklos/Studio Mikla** - *Design and code* - [tibormiklos](https://github.com/tibormiklos)
 
 ## License
 
