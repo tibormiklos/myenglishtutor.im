@@ -625,6 +625,8 @@ section.hero h1 {
 
 @media (max-width: 767px) {
   section.hero h1 {
+    font-size: 44px;
+    line-height: 48px;
     padding: 0 30px;
   }
 }
@@ -637,6 +639,7 @@ section.hero h1 {
     line-height: 41.4px;
     margin-bottom: 41.4px;
     font-weight: 700;
+    font-size: 32px;
     margin: 0;
   }
 }
