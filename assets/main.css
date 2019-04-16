@@ -552,31 +552,34 @@ header {
 
 @media (max-width: 480px) {
   header {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
     height: 80px;
   }
 }
 
-header h1 {
+header h1, header nav a.contact-link {
   color: #F9C0C0;
   margin-bottom: 28px !important;
   /* Landscape phones and down */
 }
 
 @media (max-width: 480px) {
-  header h1 {
+  header h1, header nav a.contact-link {
     font-size: 20px !important;
-    margin-bottom: 18px !important;
+    margin-bottom: 20px !important;
   }
 }
 
-header nav a.tuition {
+header nav a.tuition-link, header nav a.contact-link {
   text-decoration: none;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   /* Landscape phones and down */
+}
+
+@media (max-width: 480px) {
+  header nav a.tuition-link, header nav a.contact-link {
+    display: none;
+  }
 }
 
 header nav a:hover {

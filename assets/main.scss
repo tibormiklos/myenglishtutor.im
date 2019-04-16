@@ -132,25 +132,25 @@ header {
   justify-content: space-between;
   align-items: center;
   @include respond-to(phone){
-    justify-content: start;
     height:80px;
+    // background:red;
     }
 }
 
-header h1 {
+header h1, header nav a.contact-link {
   color:$secondary-color;
   margin-bottom:28px !important;
   @include respond-to(phone){
     font-size:20px !important;
-    margin-bottom:18px !important;
+    margin-bottom:20px !important;
     }
 }
 
-header nav a.tuition {
+header nav a.tuition-link, header nav a.contact-link {
   text-decoration:none;
   @include transition (all, 0.25s, ease-in-out);
     @include respond-to(phone){
-    // display:none;
+      display:none;
     }
 }
 
